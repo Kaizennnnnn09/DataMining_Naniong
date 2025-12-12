@@ -31,6 +31,11 @@ df <- data.frame(word = names(word_freqs), freq = word_freqs)
 
 print("Top 10 most frequent words")
 head(df, 10)
+#The results show that the word “process” appears the most, with 98 occurrences, meaning many respondents repeatedly mention or emphasize the process in their feedback. 
+#The words “need” (90) and “personnel” (74) also appear frequently, suggesting that requirements and staff involvement are common points of discussion. 
+#Words like “assist” (69) and “facil” (61) indicate that assistance and facilities are also major themes raised multiple times. 
+#Meanwhile, terms such as “idl,” “paper,” and “transact” appearing around 50 times each show recurring concerns about ID-related matters, paperwork, and transactions. 
+#Overall, the high frequencies reflect which aspects of the service people mention the most, highlighting common experiences and issues.
 
 # ---------------- Part 3: Main Word Cloud ----------------
 png("wordcloud_exam.png", width = 800, height = 600)
@@ -64,3 +69,4 @@ wordcloud(
   colors = brewer.pal(8, "Dark2")
 )
 dev.off()
+
