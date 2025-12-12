@@ -52,21 +52,19 @@ wordcloud(
 dev.off()
 
 # ---------------- Part 4: Rare Words Cloud ----------------
-raredf<- subset(df, freq==1)
+df_wordcloud_rare <- subset(df, freq == 1)
 
-print("Top 5 Least frequent words")
-head(raredf, 5)
+df_wordcloud_rare <- df_wordcloud_rare[order(df_wordcloud_rare$word),]
 
-png("wordcloud_rare.png", width = 800, height = 600)
-set.seed(1234)
-wordcloud(
-  words = raredf$word,
-  freq = raredf$freq,
-  min.freq = 1,
-  max.words = 1000,
-  random.order = FALSE,
-  rot.per = 0.35,
-  colors = brewer.pal(8, "Dark2")
-)
-dev.off()
+top_5_rare <- head(df_wordcloud_rare, 5)
+
+png(filename="wordcloud_rare.png", width=800, height=600)
+wordcloud(words = top_5_rare$word,
+          freq = top_5_rare$freq,
+          max.words = 5, # Limit to the 5 selected words
+          random.order = FALSE,
+          colors = brewer.pal(5, "Set1"))
+invisible(dev.off()) # Suppress null device message
+
+print("Word cloud saved as wordcloud_rare.png")
 
